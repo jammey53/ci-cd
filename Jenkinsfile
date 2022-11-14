@@ -13,9 +13,14 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/jammey53/ci-cd.git'
             }
         }
-        stage('Unit Testing'){
+        stage('Integration testing'){
+            
             steps{
-                sh 'mvn test'
+                
+                script{
+                    
+                    sh 'mvn verify -DskipUnitTests'
+                }
             }
         }
     }
